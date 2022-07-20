@@ -19,7 +19,7 @@ public class Report {
   int totalYoungAdults = 0;
   int totalAdults = 0;
 
-  DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+  DecimalFormat decimalFormat = new DecimalFormat("#0.00"); // https://receitasdecodigo.com.br/java/numberformat-ou-decimalformat-formatar-numeros-reais-em-java
 
   /**
    * Método FormatNumber.
@@ -47,7 +47,31 @@ public class Report {
     }
   }
 
+  /**
+   * createReport.
+   */
   public void createReport() {
-    // TBI
+    double underAgePercent = 0;
+    double youngAdultPercent = 0;
+    double adultPercent = 0;
+
+    // check if there is elements in array --- sizes equivale ao length do JS
+    if (ages.size() != 0) {
+      underAgePercent = (totalUnderAge * 100) / (double) ages.size();
+      youngAdultPercent = (totalYoungAdults * 100) / (double) ages.size();
+      adultPercent = (totalAdults * 100) / (double) ages.size();
+    }
+    System.out.println("----- Quantidade -----");
+    System.out.println("menores: " + totalUnderAge);
+    System.out.println("adultas: " + totalYoungAdults);
+    System.out.println("a partir de 50: " + totalAdults);
+
+    System.out.println("----- Percentual -----");
+    System.out.println("menores: " + formatNumber(underAgePercent) + "%");
+    System.out.println("adultas: " + formatNumber(youngAdultPercent) + "%");
+    System.out.println("a partir de 50: " + formatNumber(adultPercent) + "%");
+
+    // System.out.println("TOTAL: " + totalAdults + totalYoungAdults + totalUnderAge);
+
   }
 }
