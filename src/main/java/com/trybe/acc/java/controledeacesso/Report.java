@@ -1,5 +1,6 @@
 package com.trybe.acc.java.controledeacesso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -11,13 +12,26 @@ public class Report {
   /**
    * Método principal.
    */
+
   ArrayList<Integer> ages = new ArrayList<>();
 
   int totalUnderAge = 0;
   int totalYoungAdults = 0;
   int totalAdults = 0;
 
-  public void CreateAgeArray(int age) {
+  DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+
+  /**
+   * Método FormatNumber.
+   */
+  public String formatNumber(double age) {
+    return decimalFormat.format(age);
+  }
+
+  /**
+   * Método CreateAgeArray.
+   */
+  public void createAgeArray(int age) {
     if (age < 18) {
       System.out.println("Pessoa cliente menor de idade, catraca liberada!");
       totalUnderAge += 1;
@@ -31,5 +45,9 @@ public class Report {
       totalAdults += 1;
       ages.add(age);
     }
+  }
+
+  public void createReport() {
+    // TBI
   }
 }
